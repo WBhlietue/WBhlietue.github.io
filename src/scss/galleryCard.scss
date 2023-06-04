@@ -1,0 +1,76 @@
+@use "colors" as *;
+.galleryCard {
+    width: 200px;
+    height: 250px;
+    border-radius: 30px;
+    margin: 20px;
+    overflow: hidden;
+    &:hover {
+        .info {
+            top: -100%;
+        }
+        .viewData {
+            filter: blur(3px);
+        }
+    }
+    .viewData {
+        color: $lightTextColor;
+        transition: all 0.5s;
+        filter: blur(0px);
+        height: 100%;
+        background-color: $darkColor;
+        display: flex;
+
+        flex-direction: column;
+        align-items: center;
+        .img {
+            width: 200px;
+            height: 200px;
+        }
+        .name {
+            flex: 1;
+            display: flex;
+
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+    .info {
+        transition: all 0.5s;
+        background-color: #00000066;
+        box-shadow: 0px 0px 20px black;
+        height: 100%;
+        top: 0%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        .description {
+            padding: 15px;
+            flex: 1;
+            color: $lightTextColor;
+            text-align: center;
+        }
+        .btnList {
+            display: flex;
+            flex-direction: row;
+
+            .btns {
+                cursor: pointer;
+                flex: 1;
+                background-color: $galleryCardBtnColor;
+                height: 30px;
+                box-shadow: 0px 0px 10px black;
+                border-radius: 1000px;
+                margin: 10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                img {
+                    width: 25px;
+                    height: 25px;
+                }
+            }
+        }
+    }
+}

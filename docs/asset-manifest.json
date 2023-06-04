@@ -1,0 +1,40 @@
+{
+  "files": {
+    "main.css": "./static/css/main.a121c359.css",
+    "main.js": "./static/js/main.ef3cabe5.js",
+    "static/media/user.png": "./static/media/user.91678031273fad2b08ef.png",
+    "static/media/userImage.png": "./static/media/userImage.91678031273fad2b08ef.png",
+    "static/media/paike.png": "./static/media/paike.787ba3324418731277a6.png",
+    "static/media/pixelFlagQuiz.png": "./static/media/pixelFlagQuiz.150da357357b4f584fc6.png",
+    "static/media/easyPegSolitaire.png": "./static/media/easyPegSolitaire.d7bb3f135556b8e00d1a.png",
+    "static/media/myVideo.png": "./static/media/myVideo.06767d379407333062c0.png",
+    "static/media/magicCircle.png": "./static/media/magicCircle.f3d9ea0fe1bfd820f7be.png",
+    "static/media/planeWar.png": "./static/media/planeWar.b288bc7aa0a4a9188663.png",
+    "static/media/pyramidPuzzles.png": "./static/media/pyramidPuzzles.14ed04434733adfbcfb4.png",
+    "static/media/skyBall.png": "./static/media/skyBall.4b8235d2b0e4e24c5f1a.png",
+    "static/media/live2d.png": "./static/media/live2d.0791e54639cd4c06933f.png",
+    "static/media/hackathonvol3.png": "./static/media/hackathonvol3.dc7b4effecb1fe98a306.png",
+    "static/media/eye.png": "./static/media/eye.edc0ba827ea66f1d7dad.png",
+    "static/media/breakOutBrick.png": "./static/media/breakOutBrick.dc9b8c55950358ac3aac.png",
+    "static/media/breakOutCube.png": "./static/media/breakOutCube.dc9b8c55950358ac3aac.png",
+    "static/media/sharingan.png": "./static/media/sharingan.e83b617c3bdfb084041c.png",
+    "static/media/deleteSame.png": "./static/media/deleteSame.ae464a24b425d1ca26df.png",
+    "static/media/calculatorJS.png": "./static/media/calculatorJS.182f4d91ac8d73e740d6.png",
+    "static/media/website.png": "./static/media/website.49709231717b29f5273c.png",
+    "static/media/itch.png": "./static/media/itch.01212b46e4ec536af64e.png",
+    "static/media/githubWhite.png": "./static/media/githubWhite.aecea1828f559bab2962.png",
+    "static/media/encrypt.png": "./static/media/encrypt.4029f34d692bacb49fbf.png",
+    "static/media/github.png": "./static/media/github.f11021803f68852df283.png",
+    "static/media/playStore.png": "./static/media/playStore.23f630669d8da5a9a1e4.png",
+    "static/media/quine.png": "./static/media/quine.117a77ec5d29902e80e6.png",
+    "static/media/animeQuiz.png": "./static/media/animeQuiz.59e9ed48ac2388bf9f3b.png",
+    "static/media/goldenRectangle.png": "./static/media/goldenRectangle.7bc69a029a97b06f623a.png",
+    "index.html": "./index.html",
+    "main.a121c359.css.map": "./static/css/main.a121c359.css.map",
+    "main.ef3cabe5.js.map": "./static/js/main.ef3cabe5.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a121c359.css",
+    "static/js/main.ef3cabe5.js"
+  ]
+}
