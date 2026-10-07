@@ -7,7 +7,7 @@ export const SITE = {
   tagline: 'Full-Stack & Game Developer',
   subtagline:
     'I build cross-platform experiences — from indie games in Unity to full-stack web apps.',
-  self:"You can call me Haku",
+  self:"You can call me Haku // Hakuran on some platform",
   roles: ['Game Developer', 'Full-Stack Developer'],
   email: 'WBhlietue@gmail.com',
   blogUrl: '#TODO',
