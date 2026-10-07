@@ -1,0 +1,133 @@
+---
+import { SITE } from "../consts";
+
+const year = new Date().getFullYear();
+const socials = [
+    {
+        label: "GitHub",
+        href: SITE.github,
+        ariaLabel: "GitHub profile",
+        icon: "https://api.iconify.design/simple-icons/github.svg",
+    },
+    {
+        label: "itch.io",
+        href: SITE.itch,
+        ariaLabel: "itch.io profile",
+        icon: "https://api.iconify.design/simple-icons/itchdotio.svg",
+    },
+    {
+        label: "Email",
+        href: `mailto:${SITE.email}`,
+        ariaLabel: "Send email",
+        icon: "https://api.iconify.design/mdi/email.svg",
+    },
+];
+---
+
+<footer class="foot">
+    <div class="container inner">
+        <p class="copy">
+            © {year}
+            <span class="gradient-text name"> @{SITE.username}</span>
+            <span class="muted"> · {SITE.name} </span>
+        </p>
+        <ul class="socials">
+            {
+                socials.map((item) => (
+                    <li>
+                        <a
+                            href={item.href}
+                            target="_blank"
+                            rel="noopener"
+                            aria-label={item.label}
+                        >
+                            <img
+                                src={item.icon}
+                                alt=""
+                                width="18"
+                                height="18"
+                                loading="lazy"
+                            />
+                        </a>
+                    </li>
+                ))
+            }
+        </ul>
+    </div>
+</footer>
+
+<style>
+    .foot {
+        position: relative;
+        margin-top: var(--space-xl);
+        padding-block: var(--space-md);
+    }
+
+    .foot::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: min(92%, var(--maxw));
+        height: 1px;
+        translate: -50% 0;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            var(--p1),
+            var(--p3) 50%,
+            var(--p4),
+            transparent
+        );
+        opacity: 0.5;
+    }
+
+    .inner {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--space-sm);
+    }
+
+    .copy {
+        font-size: var(--step--1);
+        font-weight: 600;
+    }
+
+    .name {
+        font-weight: 800;
+    }
+
+    .socials {
+        display: flex;
+        gap: var(--space-xs);
+    }
+
+    .socials a {
+        display: grid;
+        place-items: center;
+        width: 40px;
+        height: 40px;
+        border: 1px solid var(--line-2);
+        border-radius: var(--radius-pill);
+        background: rgb(255 255 255 / 85%);
+        box-shadow: var(--shadow-1);
+        color: var(--ink-2);
+        transition:
+            color 0.3s var(--ease),
+            border-color 0.3s var(--ease),
+            transform 0.3s var(--ease-back),
+            box-shadow 0.3s var(--ease);
+    }
+
+    .socials a:hover {
+        color: #fff;
+        border-color: transparent;
+        background-image: var(--grad);
+        background-size: 200% 100%;
+        transform: translateY(-4px) rotate(-6deg) scale(1.06);
+        box-shadow: var(--shadow-2);
+    }
+
+</style>

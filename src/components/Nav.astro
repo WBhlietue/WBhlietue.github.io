@@ -1,0 +1,249 @@
+---
+import { SITE } from '../consts';
+---
+
+<header class="nav">
+  <div class="container bar">
+    <a class="mark" href="#home">
+      <span class="mark-dot" aria-hidden="true"></span>
+      <span class="mark-text gradient-text">{SITE.name}</span>
+    </a>
+
+    <nav class="desktop" aria-label="Main">
+      <ul class="links">
+        {SITE.nav.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+      </ul>
+      <a class="btn gh" href={SITE.github} target="_blank" rel="noopener">GitHub</a>
+    </nav>
+
+    <details class="drawer">
+      <summary aria-label="Menu"><span class="sr-only">Menu</span></summary>
+      <nav class="panel" aria-label="Mobile">
+        <ul class="links">
+          {SITE.nav.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+        </ul>
+        <a class="btn gh" href={SITE.github} target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </details>
+  </div>
+</header>
+
+<style>
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgb(247 245 255 / 72%);
+    border-bottom: 1px solid var(--line);
+    backdrop-filter: blur(14px) saturate(1.4);
+  }
+
+  .nav::after {
+    content: '';
+    position: absolute;
+    inset: auto 0 -1px 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--p1), var(--p3) 50%, var(--p4), transparent);
+    opacity: 0.45;
+  }
+
+  @supports not (backdrop-filter: blur(14px)) {
+    .nav {
+      background: var(--bg);
+    }
+  }
+
+  .bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    height: var(--nav-h);
+  }
+
+  .mark {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: var(--step-1);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+  }
+
+  .mark-dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background-image: var(--grad);
+    background-size: 300% 100%;
+    box-shadow: 0 0 0 4px var(--glow-a);
+    animation: hue 8s ease-in-out infinite alternate, beat 3.2s ease-in-out infinite;
+    transition: box-shadow 0.35s var(--ease);
+  }
+
+  .mark:hover .mark-dot {
+    box-shadow: 0 0 0 6px var(--glow-a), 0 0 18px 2px var(--glow-b);
+  }
+
+  .mark:hover .mark-text {
+    animation-duration: 3s;
+  }
+
+  .links {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .links a {
+    position: relative;
+    font-size: var(--step-0);
+    font-weight: 600;
+    color: var(--muted);
+    transition: color 0.25s var(--ease);
+  }
+
+  .links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -7px;
+    height: 3px;
+    border-radius: 3px;
+    background-image: var(--grad);
+    scale: 0 1;
+    transform-origin: 0 50%;
+    transition: scale 0.32s var(--ease);
+  }
+
+  .links a:hover {
+    color: var(--ink);
+  }
+
+  .links a:hover::after {
+    scale: 1 1;
+  }
+
+  .desktop {
+    display: none;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .gh {
+    padding: 0.44rem 1rem;
+    font-size: var(--step--1);
+  }
+
+  .drawer {
+    position: relative;
+  }
+
+  .drawer summary {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border: 1px solid var(--line-2);
+    border-radius: var(--radius-sm);
+    background: rgb(255 255 255 / 85%);
+    box-shadow: var(--shadow-1);
+    cursor: pointer;
+    list-style: none;
+    transition: border-color 0.25s var(--ease), box-shadow 0.25s var(--ease);
+  }
+
+  .drawer summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .drawer summary::before,
+  .drawer summary::after {
+    content: '';
+    width: 18px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--ink);
+    transition: translate 0.32s var(--ease), rotate 0.32s var(--ease);
+  }
+
+  .drawer summary::before {
+    translate: 0 -4px;
+    box-shadow: 0 5px 0 var(--ink);
+  }
+
+  .drawer summary::after {
+    translate: 0 5px;
+    opacity: 0;
+  }
+
+  .drawer[open] summary {
+    border-color: var(--p1);
+    box-shadow: 0 0 0 3px var(--glow-a);
+  }
+
+  .drawer[open] summary::before {
+    translate: 0 0;
+    rotate: 45deg;
+    box-shadow: 0 0 0 transparent;
+  }
+
+  .drawer[open] summary::after {
+    translate: 0 -2px;
+    rotate: -45deg;
+    opacity: 1;
+  }
+
+  .panel {
+    position: absolute;
+    top: calc(100% + 12px);
+    right: 0;
+    width: 250px;
+    max-width: 80vw;
+    padding: var(--space-sm);
+    border: 1px solid var(--line-2);
+    border-radius: var(--radius);
+    background-color: var(--surface);
+    background-image: var(--grad-soft);
+    box-shadow: var(--shadow-2);
+    animation: pop-in 0.3s var(--ease-back) both;
+  }
+
+  .panel .links {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    margin-bottom: var(--space-xs);
+  }
+
+  .panel .links a {
+    display: block;
+    padding: 0.6rem 0.5rem;
+    border-bottom: 1px solid var(--line);
+    color: var(--ink);
+  }
+
+  .panel .links a::after {
+    display: none;
+  }
+
+  .panel .links li:last-child a {
+    border-bottom: 0;
+  }
+
+  .panel .gh {
+    width: 100%;
+    justify-content: center;
+  }
+
+  @media (min-width: 720px) {
+    .desktop {
+      display: flex;
+    }
+
+    .drawer {
+      display: none;
+    }
+  }
+</style>

@@ -1,0 +1,43 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="404 — Page not found">
+  <section class="section wrap">
+    <div class="container inner">
+      <span class="code gradient-text" aria-hidden="true">404</span>
+      <h1>Page not found</h1>
+      <p class="lead">That link went nowhere. The home page still works though.</p>
+      <a class="btn" href="/">Back home</a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .wrap {
+    display: flex;
+    align-items: center;
+    min-height: min(74vh, 640px);
+  }
+
+  .inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-xs);
+  }
+
+  .code {
+    font: 800 clamp(4rem, 14vw, 9rem) / 0.9 var(--font);
+    letter-spacing: -0.06em;
+    filter: drop-shadow(0 18px 34px var(--glow-a));
+  }
+
+  h1 {
+    font-size: var(--step-2);
+  }
+
+  .inner > .btn {
+    margin-top: var(--space-md);
+  }
+</style>

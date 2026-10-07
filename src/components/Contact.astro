@@ -1,0 +1,73 @@
+---
+import { SITE } from '../consts';
+---
+
+<section id="contact" class="section" aria-labelledby="contact-title">
+  <div class="container">
+    <div class="cta reveal-blur">
+      <span class="halo" aria-hidden="true"></span>
+      <p class="eyebrow">Contact</p>
+      <h2 class="section-title" id="contact-title">Let's build something</h2>
+      <p class="lead">
+        Open to interesting projects, game jams and collaborations. The fastest way to reach me is
+        GitHub or email.
+      </p>
+
+      <div class="btn-row">
+        <a class="btn" href={`mailto:${SITE.email}`}>
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
+            <path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm9 7.2 8-5.2H4l8 5.2Zm0 2.3L4 9.2V17h16V9.2l-8 5.3Z" />
+          </svg>
+          Email me
+        </a>
+        <a class="btn btn-ghost" href={SITE.github} target="_blank" rel="noopener">GitHub</a>
+        <a class="btn btn-ghost" href={SITE.itch} target="_blank" rel="noopener">itch.io</a>
+        <!-- <a class="btn btn-ghost" href={SITE.blogUrl}>Blog</a> -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta {
+    position: relative;
+    padding: var(--space-xl) var(--space-lg);
+    border: 1px solid var(--line-2);
+    border-radius: calc(var(--radius) + 8px);
+    background-color: var(--surface);
+    background-image: radial-gradient(120% 120% at 0% 0%, #f5efff, transparent 55%),
+      radial-gradient(100% 120% at 100% 0%, #e9f2ff, transparent 55%),
+      radial-gradient(120% 140% at 50% 120%, #ffeaf0, transparent 60%);
+    box-shadow: var(--shadow-1);
+    overflow: hidden;
+  }
+
+  .halo {
+    position: absolute;
+    top: -120px;
+    right: -80px;
+    width: 340px;
+    height: 340px;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, var(--p1), var(--p3), var(--p4), var(--p5), var(--p1));
+    opacity: 0.2;
+    filter: blur(50px);
+    pointer-events: none;
+    animation: spin 26s linear infinite;
+  }
+
+  .cta > *:not(.halo) {
+    position: relative;
+    z-index: 1;
+  }
+
+  .btn-row {
+    margin-top: var(--space-lg);
+  }
+
+  @media (max-width: 520px) {
+    .cta {
+      padding: var(--space-lg) var(--space-md);
+    }
+  }
+</style>

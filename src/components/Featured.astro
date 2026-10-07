@@ -1,0 +1,218 @@
+---
+import { SITE } from '../consts';
+---
+
+<section id="work" class="section" aria-labelledby="work-title">
+  <div class="container">
+    <p class="eyebrow">Selected Work</p>
+    <h2 class="section-title reveal" id="work-title">Five things worth opening</h2>
+    <p class="lead reveal-blur" style="--i:1">
+      A rendering framework, an access hub and three games. Every card links straight to the source.
+    </p>
+
+    <div class="grid">
+      {
+        SITE.featured.map((project, i) => (
+          <a
+            class="card wcard reveal-pop"
+            style={`--i:${i}`}
+            href={project.url}
+            target="_blank"
+            rel="noopener"
+            aria-label={`${project.name} on GitHub`}
+          >
+            <span class="idx" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            <h3>{project.name}</h3>
+            <p class="tagline">{project.tagline}</p>
+            <span class="chips">
+              {project.tags.map((tag) => (
+                <span class="chip">{tag}</span>
+              ))}
+            </span>
+            <span class="repo">{project.repo}</span>
+          </a>
+        ))
+      }
+    </div>
+
+    <a class="btn btn-ghost all" href={SITE.projectsRepoUrl} target="_blank" rel="noopener">
+      All repositories
+    </a>
+  </div>
+</section>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+  }
+
+  .wcard {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    padding: var(--space-lg) var(--space-md) var(--space-md);
+    overflow: hidden;
+    isolation: isolate;
+    box-shadow: none;
+    background-color: var(--surface);
+    background-image: var(--grad-soft);
+    --c1: var(--p1);
+    --c2: var(--p3);
+    --fg: var(--ink);
+    --fgm: var(--muted);
+  }
+
+  .wcard::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-color: #14111f;
+    background-image: radial-gradient(120% 100% at 100% 0%, color-mix(in oklab, var(--c1) 55%, transparent), transparent 62%),
+      radial-gradient(100% 100% at 0% 100%, color-mix(in oklab, var(--c2) 42%, transparent), transparent 58%);
+    opacity: 0;
+    transition: opacity 0.45s var(--ease);
+    pointer-events: none;
+  }
+
+  .wcard:hover {
+    box-shadow: none;
+    border-color: color-mix(in oklab, var(--c1) 40%, var(--line));
+    --fg: #fff;
+    --fgm: rgb(255 255 255 / 72%);
+  }
+
+  .wcard:hover::before {
+    opacity: 1;
+  }
+
+  .wcard:nth-child(2) {
+    --c1: var(--p2);
+    --c2: var(--p5);
+  }
+
+  .wcard:nth-child(3) {
+    --c1: var(--p4);
+    --c2: var(--p2);
+  }
+
+  .wcard:nth-child(4) {
+    --c1: var(--p5);
+    --c2: var(--p4);
+  }
+
+  .wcard:nth-child(5) {
+    --c1: var(--p3);
+    --c2: var(--p1);
+  }
+
+  .wcard::after {
+    content: '';
+    position: absolute;
+    top: -70px;
+    right: -70px;
+    z-index: 0;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--c1), transparent 68%);
+    opacity: 0.2;
+    pointer-events: none;
+  }
+
+  .wcard:hover::after {
+    opacity: 0.34;
+  }
+
+  .idx,
+  .wcard h3,
+  .tagline,
+  .chips,
+  .repo {
+    position: relative;
+    z-index: 1;
+  }
+
+  .idx {
+    font: 800 var(--step-1) / 1 var(--mono);
+    letter-spacing: 0.08em;
+    background-image: linear-gradient(120deg, var(--c1), var(--c2));
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: var(--c1);
+    -webkit-text-fill-color: transparent;
+  }
+
+  .wcard h3 {
+    display: inline-block;
+    align-self: flex-start;
+    font-size: var(--step-2);
+    color: var(--fg);
+    transition: color 0.45s var(--ease);
+  }
+
+  .tagline {
+    color: var(--fgm);
+    max-width: 40ch;
+    text-wrap: balance;
+    transition: color 0.45s var(--ease);
+  }
+
+  .chips {
+    margin-top: auto;
+    padding-top: var(--space-sm);
+  }
+
+  .wcard .chip {
+    background-color: transparent;
+    border-color: rgb(255 255 255 / 28%);
+    color: var(--fgm);
+    transition: color 0.45s var(--ease), border-color 0.45s var(--ease);
+  }
+
+  .wcard .chip:hover {
+    background-image: linear-gradient(96deg, var(--c1), var(--c2));
+    border-color: transparent;
+    color: #fff;
+  }
+
+  .repo {
+    align-self: flex-start;
+    padding: 0.22rem 0.6rem;
+    border: 1px solid var(--line-2);
+    border-radius: 8px;
+    background: var(--surface-2);
+    color: var(--muted);
+    font: 600 var(--step--1) / 1.5 var(--mono);
+    letter-spacing: -0.01em;
+    transition: background-color 0.45s var(--ease), border-color 0.45s var(--ease),
+      color 0.45s var(--ease);
+  }
+
+  .wcard:hover .repo {
+    background-color: rgb(255 255 255 / 10%);
+    border-color: rgb(255 255 255 / 30%);
+    color: #fff;
+  }
+
+  .all {
+    margin-top: var(--space-lg);
+  }
+
+  @media (min-width: 900px) {
+    .grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .wcard:first-child {
+      grid-column: span 2;
+    }
+
+    .wcard:first-child h3 {
+      font-size: var(--step-3);
+    }
+  }
+</style>

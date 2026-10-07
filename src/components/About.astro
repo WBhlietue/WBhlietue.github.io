@@ -1,0 +1,93 @@
+---
+import { SITE } from '../consts';
+---
+
+<section id="about" class="section" aria-labelledby="about-title">
+  <div class="container">
+    <p class="eyebrow">About</p>
+    <h2 class="section-title reveal" id="about-title">Building things that run everywhere</h2>
+    <p class="lead reveal-blur" style="--i:1">
+      Game development, web platforms and desktop tooling — I like working across the whole stack,
+      from rendering pipelines to deployment.
+    </p>
+
+    <ul class="grid">
+      {
+        SITE.about.map((line, i) => (
+          <li class="card acard reveal-pop" style={`--i:${i}`}>
+            <span class="idx" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            <p>{line}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+  }
+
+  .acard {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    --c1: var(--p1);
+    --c2: var(--p3);
+  }
+
+  .acard:nth-child(2) {
+    --c1: var(--p2);
+    --c2: var(--p5);
+  }
+
+  .acard:nth-child(3) {
+    --c1: var(--p4);
+    --c2: var(--p2);
+  }
+
+  .acard:nth-child(4) {
+    --c1: var(--p3);
+    --c2: var(--p1);
+  }
+
+  .idx {
+    display: inline-block;
+    font: 800 var(--step-2) / 1 var(--mono);
+    letter-spacing: -0.02em;
+    background-image: linear-gradient(120deg, var(--c1), var(--c2));
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: var(--c1);
+    -webkit-text-fill-color: transparent;
+  }
+
+  .acard::after {
+    content: '';
+    position: absolute;
+    right: -30px;
+    bottom: -30px;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--c1), transparent 68%);
+    opacity: 0.16;
+    pointer-events: none;
+    transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
+  }
+
+  .acard:hover::after {
+    opacity: 0.3;
+    transform: scale(1.15);
+  }
+
+  .acard p {
+    position: relative;
+    z-index: 1;
+    color: var(--ink-2);
+  }
+</style>
